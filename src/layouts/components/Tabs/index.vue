@@ -2,7 +2,11 @@
 	<div class="tabs-box">
 		<div class="tabs-menu">
 			<el-tabs v-model="tabsMenuValue" type="card" @tab-click="tabClick" @tab-remove="tabRemove">
-				<el-tab-pane v-for="item in tabsMenuList" :key="item.path" :label="item.title" :name="item.path" :closable="item.close">
+				<el-tab-pane v-for="item in tabsMenuList" :key="item.path" 
+				:label="item.title" 
+				:name="item.path" 
+				:closable="item.close"
+				>
 					<template #label>
 						<el-icon class="tabs-icon" v-show="item.icon && themeConfig.tabsIcon">
 							<component :is="item.icon"></component>
@@ -24,7 +28,7 @@ import { GlobalStore } from "@/stores";
 import { TabsStore } from "@/stores/modules/tabs";
 import { AuthStore } from "@/stores/modules/auth";
 import { KeepAliveStore } from "@/stores/modules/keepAlive";
-import { TabsPaneContext } from "element-plus";
+import type { TabsPaneContext } from 'element-plus'
 import MoreButton from "./components/MoreButton.vue";
 
 const route = useRoute();
@@ -95,7 +99,7 @@ watch(
 );
 
 // Tab Click
-const tabClick = (tabItem: TabsPaneContext) => {
+const tabClick = (tabItem:TabsPaneContext) => {	
 	const fullPath = tabItem.props.name as string;
 	router.push(fullPath);
 };

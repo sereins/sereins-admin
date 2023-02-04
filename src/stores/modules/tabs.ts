@@ -11,7 +11,7 @@ export const TabsStore = defineStore({
 	}),
 	actions: {
 		// Add Tabs
-		async addTabs(tabItem: TabsMenuProps) {
+		async addTabs(tabItem: TabsMenuProps) {			
 			if (this.tabsMenuList.every(item => item.path !== tabItem.path)) {
 				this.tabsMenuList.push(tabItem);
 			}
