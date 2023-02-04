@@ -1,4 +1,3 @@
-<!-- 纵向布局 -->
 <template>
 	<el-container class="layout">
 		<el-aside>
@@ -31,6 +30,7 @@
 			<Main />
 		</el-container>
 	</el-container>
+	<ThemeDrawer />
 </template>
 
 <script setup lang="ts" name="layoutVertical">
@@ -38,6 +38,7 @@ import { computed } from "vue";
 import { useRoute } from "vue-router";
 import { GlobalStore } from "@/stores";
 import { AuthStore } from "@/stores/modules/auth";
+import ThemeDrawer from "./components/ThemeDrawer/index.vue";
 
 import Main from "@/layouts/components/Main/index.vue";
 import ToolBarLeft from "@/layouts/components/Header/ToolBarLeft.vue";

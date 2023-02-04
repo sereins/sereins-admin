@@ -6,13 +6,13 @@
 		<template #dropdown>
 			<el-dropdown-menu>
 				<el-dropdown-item @click="openDialog('infoRef')">
-					<!-- <el-icon><User /></el-icon>{{ $t("header.personalData") }} -->
+					<el-icon><User /></el-icon>个人信息
 				</el-dropdown-item>
 				<el-dropdown-item @click="openDialog('passwordRef')">
-					<!-- <el-icon><Edit /></el-icon>{{ $t("header.changePassword") }} -->
+					<el-icon><Edit /></el-icon>修改密码
 				</el-dropdown-item>
 				<el-dropdown-item @click="logout" divided>
-					<!-- <el-icon><SwitchButton /></el-icon>{{ $t("header.logout") }} -->
+					<el-icon><SwitchButton /></el-icon>退出登录
 				</el-dropdown-item>
 			</el-dropdown-menu>
 		</template>
@@ -50,6 +50,8 @@ const logout = () => {
 		// 3.重定向到登陆页
 		router.replace(LOGIN_URL);
 		ElMessage.success("退出登录成功！");
+	}).catch(()=>{
+		
 	});
 };
 
@@ -58,6 +60,7 @@ interface DialogExpose {
 }
 const infoRef = ref<null | DialogExpose>(null);
 const passwordRef = ref<null | DialogExpose>(null);
+
 // 打开修改密码和个人信息弹窗
 const openDialog = (refName: string) => {
 	if (refName == "infoRef") infoRef.value?.openDialog();

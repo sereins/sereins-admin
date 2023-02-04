@@ -10,3 +10,7 @@ export const DEFAULT_PRIMARY: string = "#009688";
 // * 路由白名单地址（必须是本地存在的路由 staticRouter.ts）
 export const ROUTER_WHITE_LIST: string[] = ["/500"];
 
+export const COPY_RIGHT:Map<string,string> = new Map([
+    ["link","https://github.com/sereins/sereins-admin"],
+    ["info","2022 ©Sereins-admin by sereins."]
+])

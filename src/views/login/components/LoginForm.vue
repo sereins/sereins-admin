@@ -19,7 +19,7 @@
 		<el-button :icon="CircleClose" round @click="resetForm(loginFormRef)" size="large">重置</el-button>
 		<el-button :icon="UserFilled" round @click="login(loginFormRef)" size="large" type="primary" :loading="loading">
 			登录
-		</el-button>
+		</el-button> 
 	</div>
 </template>
 
@@ -56,7 +56,7 @@ const loginForm = reactive<Login.ReqLoginForm>({ username: "", password: "" });
 
 const login = (formEl: FormInstance | undefined) => {
 	if (!formEl) return;
-	formEl.validate(async valid => {
+	formEl.validate(async (valid: any) => {
 		if (!valid) return;
 		loading.value = true;
 		try {

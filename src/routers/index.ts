@@ -5,6 +5,7 @@ import { LOGIN_URL, ROUTER_WHITE_LIST } from "@/config/config";
 import { GlobalStore } from "@/stores";
 import { AuthStore } from "@/stores/modules/auth";
 import NProgress from "@/config/nprogress";
+
 // 导出的路由对象
 const router = createRouter({
     // 路由模式
@@ -15,9 +16,9 @@ const router = createRouter({
 	scrollBehavior: () => ({ left: 0, top: 0 })
 });
 
-
 /**
  * @description 路由拦截 beforeEach
+ * 拦截器接受一个异步的函数，该函数具备三个参数 to->到那个页面去 from->从那个页面来 next是一个函数,用于放行。
  * */
 router.beforeEach(async (to, from, next) => {
 	const globalStore = GlobalStore();
@@ -29,7 +30,8 @@ router.beforeEach(async (to, from, next) => {
 	const title = import.meta.env.VITE_GLOB_APP_TITLE;
 	document.title = to.meta.title ? `${to.meta.title} - ${title}` : title;
 
-	// 3.判断是访问登陆页，有 Token 就在当前页面，没有 Token 重置路由并放行到登陆页
+	// 3.判断是访问登陆页，有Token就在当前页面，没有Token重置路由并放行到登陆页
+	// 即有Token的情况下访问登录页面也是跳转到当前页面。没有才能正常访问登录页面。
 	if (to.path === LOGIN_URL) {
 		if (globalStore.token) return next(from.fullPath);
 		resetRouter();

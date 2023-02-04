@@ -1,11 +1,18 @@
 <template>
 	<div class="tool-bar-ri">
 		<div class="header-icon">
-			<AssemblySize id="assemblySize" />
+			<!-- 搜索菜单 -->
 			<SearchMenu id="searchMenu" />
+			<!-- 主题设置 -->
 			<ThemeSetting id="themeSetting" />
+			<!-- 消息 -->
 			<Message id="message" />
-			<Fullscreen id="fullscreen" />
+			<!-- 全屏切换 -->
+			<div class="fullscreen">
+				<i :class="['iconfont', isFullscreen ? 'icon-suoxiao' : 'icon-fangda']" 
+				class="toolBar-icon" 
+				@click="toggle"></i>
+			</div>
 		</div>
 		<span class="username">Geeker</span>
 		<Avatar />
@@ -14,11 +21,14 @@
 
 <script setup lang="ts">
 import SearchMenu from "./components/SearchMenu.vue";
-import Fullscreen from "./components/Fullscreen.vue";
 import Message from "./components/Message.vue";
 import ThemeSetting from "./components/ThemeSetting.vue";
-import AssemblySize from "./components/AssemblySize.vue";
 import Avatar from "./components/Avatar.vue";
+
+// 全屏切换
+import { useFullscreen } from "@vueuse/core";
+const { toggle, isFullscreen } = useFullscreen();
+
 </script>
 
 <style scoped lang="scss">
